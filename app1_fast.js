@@ -1,23 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    let horas = document.getElementById('horas');
     let minutos = document.getElementById('minutos');
     let segundos = document.getElementById('segundos');
-    let contador = 10;
-    let countMin = 2;
+    let countMin = 1;
+    let contador = countMin*60;
 
     let tiempo = setInterval(() => mostrarTemporizador(), 1000);
 
+
     function mostrarTemporizador(){
-        let horaActual = new Date();
-    
-        horas.innerHTML = "00";
-    
-        minutos.innerHTML = countMin;
-        contador--;
-        minutos.innerHTML = (countMin < 10 ? "0" : '') + countMin;
-        segundos.innerHTML = ( contador < 10 ? "0" : '') + contador;
-                if(countMin == 0 && contador == 0){
+  
+        minutos.innerHTML = (parseInt(contador/60) < 10 ? '0' : '') + parseInt(contador/60);
+        segundos.innerHTML = ((contador%60) < 10 ? '0' : '') + (contador%60);
+
+                if(contador == 0){
+                    contador = 60;
+                    countMin--;
                     window.clearInterval(tiempo);
                     Swal.fire({
                         title: 'El examen terminó',
@@ -33,12 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         }
                     });
-                }
-                if(contador == 0){
-                    contador = 60;
-                    countMin--;
-                }     
+                }   
+                contador--;  
     }
+
+     function validarRespuesta()
+     {
+        var seleccionado = document.querySelector('input[name="respuesta"]:checked');
+        alert(seleccionado);
+     }
+
 
     });
     

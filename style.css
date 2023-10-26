@@ -69,4 +69,4 @@ body{
     left: 50%;
     transform: translate(-50%);
 }
-#horas::after{content: ' Horas';}#minutos::after{ content: ' Minutos';}#segundos::after{ content: ' Segundos'}
+#minutos::after{ content: ' Minutos';}#segundos::after{ content: ' Segundos'}
